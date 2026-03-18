@@ -6,17 +6,17 @@
 }
 
 :root {
-  --bg-dark: #0d1b2a;
-  --bg-card: #1a2f4a;
-  --gold: #d4af37;
-  --gold-dark: #a07820;
-  --text-light: #f0e6d3;
+  --bg-blue: #004890;
+  --bg-cream: #fdf6e3;
+  --blue-dark: #003366;
+  --blue-light: #0056b3;
+  --text-main: #003366;
 }
 
 body {
   font-family: var(--font-bengali);
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-cream);
+  color: var(--text-main);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,14 +28,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--bg-cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-dark);
+  background: var(--bg-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: var(--blue-dark);
 }
