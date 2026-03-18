@@ -278,7 +278,7 @@ export default function App() {
               بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
             </div>
             <div className="text-[#004890] tracking-[8px] mb-4 z-10">✦ ✦ ✦</div>
-            <div className="font-arabic text-4xl md:text-6xl text-[#004890] mb-6 md:mb-8 z-10">أَسْمَاءُ اللَّهِ الْحُসْنَى</div>
+            <div className="font-arabic text-4xl md:text-6xl text-[#004890] mb-6 md:mb-8 z-10">أَسْمَاءُ اللَّهِ الْحُسْنَى</div>
             <h1 className="text-3xl md:text-5xl font-bold text-[#003366] leading-tight mb-4 z-10">
               আল্লাহর ৯৯ নাম<br />
               <span className="text-xl md:text-2xl text-[#004890]">আসমাউল হুসনা</span>
@@ -484,40 +484,96 @@ export default function App() {
               <div className="w-24" />
             </header>
 
-            <main className="flex-1 p-4 md:p-10 max-w-4xl mx-auto w-full pb-24 md:pb-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-[#004890] font-bold text-2xl mb-6 flex items-center gap-2">
-                    <div className="w-2 h-8 bg-[#004890] rounded-full" />
-                    সমার্থক নামসমূহ
-                  </h3>
-                  {synAntData.filter(d => d.type === 'synonym').map((item, idx) => (
-                    <div key={idx} className="bg-white border border-[#004890]/20 p-5 rounded-2xl shadow-sm">
-                      <div className="flex items-center justify-between text-[#004890] font-bold text-lg mb-2">
-                        <span>{item.pair[0]}</span>
-                        <span className="text-[#003366]/30">&</span>
-                        <span>{item.pair[1]}</span>
-                      </div>
-                      <p className="text-[#003366]/70 text-sm">মূলভাব: {item.meaning}</p>
+            <main className="flex-1 p-4 md:p-10 max-w-5xl mx-auto w-full pb-24 md:pb-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {/* Synonyms Section */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 border-b-2 border-[#004890]/20 pb-4">
+                    <div className="w-10 h-10 bg-[#004890] rounded-xl flex items-center justify-center text-white shadow-lg shadow-[#004890]/20">
+                      <ArrowLeftRight size={20} />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-[#004890] font-bold text-xl">সমার্থক নামসমূহ</h3>
+                      <p className="text-[#003366]/50 text-xs uppercase tracking-wider">একই অর্থবোধক নামসমূহ</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid gap-4">
+                    {synAntData.filter(d => d.type === 'synonym').map((item, idx) => (
+                      <motion.div 
+                        key={idx}
+                        whileHover={{ y: -2 }}
+                        className="bg-white border border-[#004890]/10 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all relative overflow-hidden group"
+                      >
+                        <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                          <ArrowLeftRight size={40} className="text-[#004890]" />
+                        </div>
+                        <div className="flex items-center justify-between text-[#004890] font-bold text-lg mb-3 relative z-10">
+                          <div className="flex flex-col">
+                            <span className="text-xs text-[#003366]/40 font-medium mb-1">নাম ১</span>
+                            <span>{item.pair[0]}</span>
+                          </div>
+                          <div className="w-8 h-8 rounded-full bg-[#004890]/5 flex items-center justify-center text-[#004890]/30 italic text-sm">
+                            &
+                          </div>
+                          <div className="flex flex-col text-right">
+                            <span className="text-xs text-[#003366]/40 font-medium mb-1">নাম ২</span>
+                            <span>{item.pair[1]}</span>
+                          </div>
+                        </div>
+                        <div className="bg-[#fdf6e3] rounded-xl p-3 border border-[#004890]/5">
+                          <p className="text-[#003366]/70 text-sm leading-relaxed">
+                            <span className="font-bold text-[#004890]">মূলভাব:</span> {item.meaning}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-[#004890] font-bold text-2xl mb-6 flex items-center gap-2">
-                    <div className="w-2 h-8 bg-red-600 rounded-full" />
-                    বিপরীতার্থক নামসমূহ
-                  </h3>
-                  {synAntData.filter(d => d.type === 'antonym').map((item, idx) => (
-                    <div key={idx} className="bg-white border border-[#004890]/20 p-5 rounded-2xl shadow-sm">
-                      <div className="flex items-center justify-between text-[#004890] font-bold text-lg mb-2">
-                        <span className="text-emerald-600">{item.pair[0]}</span>
-                        <ArrowLeftRight size={14} className="text-[#003366]/20" />
-                        <span className="text-rose-600">{item.pair[1]}</span>
-                      </div>
-                      <p className="text-[#003366]/70 text-sm">বিষয়: {item.meaning}</p>
+                {/* Antonyms Section */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 border-b-2 border-[#003366]/20 pb-4">
+                    <div className="w-10 h-10 bg-[#003366] rounded-xl flex items-center justify-center text-white shadow-lg shadow-[#003366]/20">
+                      <ArrowLeftRight size={20} className="rotate-90" />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-[#003366] font-bold text-xl">বিপরীতার্থক নামসমূহ</h3>
+                      <p className="text-[#003366]/50 text-xs uppercase tracking-wider">পরস্পর বিপরীত গুণাবলী</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4">
+                    {synAntData.filter(d => d.type === 'antonym').map((item, idx) => (
+                      <motion.div 
+                        key={idx}
+                        whileHover={{ y: -2 }}
+                        className="bg-white border border-[#003366]/10 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all relative overflow-hidden group"
+                      >
+                        <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                          <ArrowLeftRight size={40} className="text-[#003366] rotate-90" />
+                        </div>
+                        <div className="flex items-center justify-between text-[#003366] font-bold text-lg mb-3 relative z-10">
+                          <div className="flex flex-col">
+                            <span className="text-xs text-[#003366]/40 font-medium mb-1">নাম ১</span>
+                            <span className="text-[#004890]">{item.pair[0]}</span>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-[#003366]/5 flex items-center justify-center">
+                            <ArrowLeftRight size={16} className="text-[#003366]/30" />
+                          </div>
+                          <div className="flex flex-col text-right">
+                            <span className="text-xs text-[#003366]/40 font-medium mb-1">নাম ২</span>
+                            <span className="text-[#003366]">{item.pair[1]}</span>
+                          </div>
+                        </div>
+                        <div className="bg-[#fdf6e3] rounded-xl p-3 border border-[#003366]/5">
+                          <p className="text-[#003366]/70 text-sm leading-relaxed">
+                            <span className="font-bold text-[#003366]">বিষয়:</span> {item.meaning}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </main>
