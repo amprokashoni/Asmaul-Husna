@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-bengali: "Noto Serif Bengali", serif;
+  --font-arabic: "Amiri", serif;
+}
+
+:root {
+  --bg-dark: #0d1b2a;
+  --bg-card: #1a2f4a;
+  --gold: #d4af37;
+  --gold-dark: #a07820;
+  --text-light: #f0e6d3;
+}
+
+body {
+  font-family: var(--font-bengali);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
